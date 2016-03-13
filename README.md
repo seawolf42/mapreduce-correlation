@@ -16,9 +16,11 @@ The Pearson correlation coefficient between two columns is computed using the fo
     numerator =
         sum of products - (product of sums / count)
     denominator =
-        ( (sum of x^2) - (sum of x)^2 / count) ^ 2
-        *
-        ( (sum of y^2) - (sum of y)^2 / count) ^ 2
+        sqrt (
+            ( (sum of x^2) - (sum of x)^2 / count) ^ 2
+            *
+            ( (sum of y^2) - (sum of y)^2 / count) ^ 2
+        )
     result =
         numerator / denominator
 
@@ -70,11 +72,13 @@ To run the server (our script):
 
 To run the worker(s):
 
-    python mincemeat.py -p <password> <hostname>
+    python path/to/mincemeat.py -p <password> <hostname>
+
+**Note**: change `path/to/mincemeat.py` to be whatever path gets you to the `mincemeat` repo mentioned above. Where this appears will depend on how you install it.
 
 Since we're running everthing on localhost and this computes extremely fast for our small dataset, we only need to run these two lines (each in separate terminal windows):
 
     python correlate.py
-    python mincemeat.py -p changeme localhost
+    python path/to/mincemeat.py -p changeme localhost
 
 The output will be pairs of columns by name (`a`, `b`, `c`, and `d`) and the correlation coefficient between those two columns.
