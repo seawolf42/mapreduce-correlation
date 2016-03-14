@@ -40,16 +40,18 @@ def reducefn(key, values):
     return numerator/denominator
 
 
-def run_server(filename):
+def run_server(infilename, outfilename):
     s = mincemeat.Server()
-    headers, data = read_data(filename)
+    headers, data = read_data(infilename)
     s.datasource = data
     s.mapfn = mapfn
     s.reducefn = reducefn
     results = s.run_server(password="changeme")
-    for r in sorted(results):
-        print (headers[r[0]+1], headers[r[1]+1]), results[r]
+    with open(outfilename, 'w') as outfile:
+        for r in sorted(results):
+            outfile.write('({0},{1})\t{2:.5f}\n'.format(headers[r[0]+1], headers[r[1]+1], results[r]))
 
 if __name__ == '__main__':
-    filename = sys.argv[1] if len(sys.argv) > 1 else 'data1.csv'
-    run_server(filename)
+    infilename = sys.argv[1] if len(sys.argv) > 1 else 'data1.csv'
+    outfilename = sys.argv[2] if len(sys.argv) > 2 else 'data1.out'
+    run_server(infilename, outfilename)
