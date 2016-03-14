@@ -68,7 +68,7 @@ The `mincemeat` library for Python makes testing distributed map/reduce jobs muc
 
 To run the server (our script):
 
-    python <scriptname>
+    python <scriptname> <datafilename>
 
 To run the worker(s):
 
@@ -78,7 +78,7 @@ To run the worker(s):
 
 Since we're running everthing on localhost and this computes extremely fast for our small dataset, we only need to run these two lines (each in separate terminal windows):
 
-    python correlate.py
+    python correlate.py data1.csv
     python path/to/mincemeat.py -p changeme localhost
 
 The output will be pairs of columns by name (`a`, `b`, `c`, and `d`) and the correlation coefficient between those two columns.

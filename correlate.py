@@ -1,9 +1,10 @@
 import math
 import mincemeat
+import sys
 
 
-def read_data():
-    with open('data.csv') as infile:
+def read_data(filename='data1.csv'):
+    with open(filename) as infile:
         lines = infile.read().split('\n')
         headers = lines[0].split(',')
         lines = [ line.split(',') for line in lines[1:-1] ]
@@ -39,9 +40,9 @@ def reducefn(key, values):
     return numerator/denominator
 
 
-def run_server():
+def run_server(filename):
     s = mincemeat.Server()
-    headers, data = read_data()
+    headers, data = read_data(filename)
     s.datasource = data
     s.mapfn = mapfn
     s.reducefn = reducefn
@@ -50,4 +51,5 @@ def run_server():
         print (headers[r[0]+1], headers[r[1]+1]), results[r]
 
 if __name__ == '__main__':
-    run_server()
+    filename = sys.argv[1] if len(sys.argv) > 1 else 'data1.csv'
+    run_server(filename)
