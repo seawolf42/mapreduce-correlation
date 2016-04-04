@@ -86,6 +86,10 @@ The output will be pairs of columns by name (`a`, `b`, `c`, and `d`) and the cor
 
 ## Validation
 
-An additional script has been written to generate files with the expected output of the correlation computations. To run it type:
+An additional script has been written to generate files with the expected output of the correlation computations. This script uses the `pandas` library to show how to perform the same analysis quickly in a few lines of code (the point of our algorithm is not to be performant, but rather to demonstrate the algorithm). It also creates files we can `diff` against to compare our output to the output from a trusted source.
+
+To run it type:
 
     python validate.py <datafilename> <outputfilename>
+
+The expected output for data1.csv and data2.csv has already been computed and included.
