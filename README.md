@@ -4,6 +4,7 @@ This project demonstrates a very simple map/reduce example to compute the Pearso
 
 The map and reduce functions are inspired by (but corrected) [Computing Pearson Correlation using Hadoop’s Map/Reduce (M/R) Paradigm](https://vangjee.wordpress.com/2012/02/29/computing-pearson-correlation-using-hadoops-mapreduce-mr-paradigm/).
 
+
 ## Overview
 
 I'm using a very simple dataset in CSV format which contains a header row and several data rows. Each data row contains an identifier and several values. We want to ignore the identifier and find correlations between the remaining rows.
@@ -54,6 +55,7 @@ Since row `p1` contains 1, 1, 3, and -1, the following key:value pairs should be
     (2,3): (3,-1)
 
 Note that order doesn't matter, we simply enumerate them in this order so that it's easy to write and easy to verify.
+
 
 ## Reducer
 
